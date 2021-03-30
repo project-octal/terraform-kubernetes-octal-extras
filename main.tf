@@ -1,9 +1,13 @@
+locals {
+  deployment_namespace = var.deployment_namespace == null ? "octal-extras" : var.deployment_namespace
+}
+
 # The namespace the project will reside in
 resource "kubernetes_namespace" "octal_extras_namespace" {
   count = anytrue(values(var.enabled_extras)) ? 1 : 0
 
   metadata {
-    name = var.deployment_namespace
+    name = local.deployment_namespace
   }
 }
 
@@ -13,7 +17,7 @@ module "octal_extras_argocd_project" {
   count  = anytrue(values(var.enabled_extras)) ? 1 : 0
 
   argocd_namespace = var.argocd_namespace
-  name             = var.deployment_namespace
+  name             = local.deployment_namespace
   description      = "This project contains extra octal resources."
   destinations = [
     {
