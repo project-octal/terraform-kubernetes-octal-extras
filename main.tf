@@ -32,7 +32,7 @@ module "octal_extras_argocd_project" {
 
 module "octal_extras_kubedb" {
   source = "./terraform-octal-kubedb"
-  count  = var.enabled_extras.kubedb ? 1 : 0
+  count  = var.enabled_extras.kubedb == null ? 0 : 1
 
   argocd_namespace = var.argocd_namespace
   argocd_project   = module.octal_extras_argocd_project[0].name
@@ -40,7 +40,7 @@ module "octal_extras_kubedb" {
 
 module "octal_extras_rookio" {
   source = "./terraform-octal-rookio"
-  count  = var.enabled_extras.rookio ? 1 : 0
+  count  = var.enabled_extras.rookio == null ? 0 : 1
 
   argocd_namespace = var.argocd_namespace
   argocd_project   = module.octal_extras_argocd_project[0].name
