@@ -1,10 +1,6 @@
-locals {
-  deployment_namespace = var.deployment_namespace == null ? "octal-extras" : var.deployment_namespace
-}
-
 # The namespace the project will reside in
 resource "kubernetes_namespace" "octal_extras_namespace" {
-  count = anytrue(values(var.enabled_extras)) ? 1 : 0
+  count = anytrue(values(local.enabled_extras)[*]["enabled"]) ? 1 : 0
 
   metadata {
     name = local.deployment_namespace
@@ -14,7 +10,7 @@ resource "kubernetes_namespace" "octal_extras_namespace" {
 # Create the ArgoCD Project.
 module "octal_extras_argocd_project" {
   source = "github.com/project-octal/terraform-argocd-project?ref=v1.0.1"
-  count  = anytrue(values(var.enabled_extras)) ? 1 : 0
+  count  = anytrue(values(local.enabled_extras)[*]["enabled"]) ? 1 : 0
 
   argocd_namespace = var.argocd_namespace
   name             = local.deployment_namespace
@@ -32,20 +28,4 @@ module "octal_extras_argocd_project" {
     }
   ]
   permissions = []
-}
-
-module "octal_extras_kubedb" {
-  source = "./terraform-octal-kubedb"
-  count  = var.enabled_extras.kubedb == null ? 0 : 1
-
-  argocd_namespace = var.argocd_namespace
-  argocd_project   = module.octal_extras_argocd_project[0].name
-}
-
-module "octal_extras_rookio" {
-  source = "./terraform-octal-rookio"
-  count  = var.enabled_extras.rookio == null ? 0 : 1
-
-  argocd_namespace = var.argocd_namespace
-  argocd_project   = module.octal_extras_argocd_project[0].name
 }
