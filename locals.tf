@@ -3,7 +3,7 @@ locals {
   default_deployment_namespace = var.default_deployment_namespace == null ? "octal-extras" : var.default_deployment_namespace
 
   enabled_extras = {for key,val in var.enabled_extras :
-    key => defaults(enabled_extra, {
+    key => defaults(val, {
       enabled   = false
       namespace = local.default_deployment_namespace
     })
