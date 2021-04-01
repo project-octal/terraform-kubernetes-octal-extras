@@ -1,31 +1,18 @@
-# The namespace the project will reside in
-resource "kubernetes_namespace" "octal_extras_namespace" {
-  count = anytrue(values(local.enabled_extras)[*]["enabled"]) ? 1 : 0
-
-  metadata {
-    name = local.default_deployment_namespace
-  }
-}
-
 # Create the ArgoCD Project.
 module "octal_extras_argocd_project" {
   source = "github.com/project-octal/terraform-argocd-project?ref=v1.0.1"
   count  = anytrue(values(local.enabled_extras)[*]["enabled"]) ? 1 : 0
 
   argocd_namespace = var.argocd_namespace
-  name             = local.default_deployment_namespace
+  name             = "project-octal-extras"
   description      = "This project contains extra octal resources."
-  destinations = [
+  destinations = concat(local.deployment_destinations, [
     {
       # This is required so that Argo can create the KubeDB RBAC RoleBinding
       # TODO: Find out if there's a way to get around this. It seems to be the only thing being created in kube-system
       server    = var.deployment_cluster
       namespace = "kube-system"
-    },
-    {
-      server    = var.deployment_cluster
-      namespace = kubernetes_namespace.octal_extras_namespace[0].metadata.0.name
     }
-  ]
+  ])
   permissions = []
 }

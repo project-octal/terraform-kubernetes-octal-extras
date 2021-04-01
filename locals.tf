@@ -1,7 +1,4 @@
 locals {
-
-  default_deployment_namespace = var.default_deployment_namespace == null ? "octal-extras" : var.default_deployment_namespace
-
   enabled_extras = {
     kubedb = var.enabled_extras.kubedb == null ? {
       enabled   = false
@@ -14,4 +11,5 @@ locals {
     } : var.enabled_extras.rookio
   }
 
+  deployment_destinations = [for key,val in local.enabled_extras : { server = var.deployment_cluster, namespace = val["namespace"]} if val["enabled"] ]
 }
