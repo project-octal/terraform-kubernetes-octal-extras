@@ -19,11 +19,11 @@ variable "enabled_extras" {
   type = object({
     kubedb = optional(object({
       enabled   = bool
-      namespace = string
+      namespace = optional(string)
     }))
     rookio = optional(object({
       enabled   = bool
-      namespace = string
+      namespace = optional(string)
     }))
   })
   default = {}
