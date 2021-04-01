@@ -3,7 +3,7 @@ resource "kubernetes_namespace" "octal_extras_namespace" {
   count = anytrue(values(local.enabled_extras)[*]["enabled"]) ? 1 : 0
 
   metadata {
-    name = local.deployment_namespace
+    name = local.default_deployment_namespace
   }
 }
 
@@ -13,7 +13,7 @@ module "octal_extras_argocd_project" {
   count  = anytrue(values(local.enabled_extras)[*]["enabled"]) ? 1 : 0
 
   argocd_namespace = var.argocd_namespace
-  name             = local.deployment_namespace
+  name             = local.default_deployment_namespace
   description      = "This project contains extra octal resources."
   destinations = [
     {
