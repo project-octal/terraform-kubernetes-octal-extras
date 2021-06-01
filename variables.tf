@@ -11,13 +11,14 @@ variable "deployment_cluster" {
 
 variable "enabled_extras" {
   type = object({
-    kubedb = optional(object({
-      enabled   = bool
-      namespace = string
-    }))
     rookio = optional(object({
       enabled   = bool
       namespace = string
+    }))
+    kubedb = optional(object({
+      enabled   = bool
+      namespace = string
+      license   = string
     }))
   })
   default = {}

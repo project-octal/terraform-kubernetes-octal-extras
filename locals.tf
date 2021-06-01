@@ -11,5 +11,5 @@ locals {
     } : var.enabled_extras.rookio
   }
 
-  deployment_destinations = [for key,val in local.enabled_extras : { server = var.deployment_cluster, namespace = val["namespace"]} if val["enabled"] ]
+  deployment_destinations = [for key, val in local.enabled_extras : { server = var.deployment_cluster, namespace = val["namespace"] } if val["enabled"]]
 }
