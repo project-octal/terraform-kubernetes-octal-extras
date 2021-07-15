@@ -20,6 +20,10 @@ variable "enabled_extras" {
       namespace = string
       license   = string
     }))
+    code_server = optional(object({
+      enabled   = bool
+      namespace = string
+    }))
   })
   default = {}
 }

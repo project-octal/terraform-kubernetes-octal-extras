@@ -15,15 +15,15 @@ module "octal_extras_argocd_project" {
     }
   ])
   cluster_resource_whitelist = [
-    { 
+    {
       kind  = "*"
-      group = "*" 
+      group = "*"
     }
   ]
   namespace_resource_whitelist = [
-    { 
+    {
       kind  = "*"
-      group = "*" 
+      group = "*"
     }
   ]
   permissions = []
