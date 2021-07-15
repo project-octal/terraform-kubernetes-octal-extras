@@ -10,4 +10,15 @@ module "kubedb_argocd_application" {
   repo_url        = "https://charts.appscode.com/stable/"
   chart           = "kubedb"
   target_revision = "v2021.03.17"
+  ignore_differences = [
+    {
+      kind = "APIService"
+      group = "apiregistration.k8s.io"
+      name = "v1alpha1.validators.kubedb.com"
+      jsonPointers = [
+        "/spec/caBundle",
+        "/metadata"
+      ]
+    }
+  ]
 }
