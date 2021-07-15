@@ -14,5 +14,17 @@ module "octal_extras_argocd_project" {
       namespace = "kube-system"
     }
   ])
+  cluster_resource_whitelist = [
+    { 
+      kind  = "*"
+      group = "*" 
+    }
+  ]
+  namespace_resource_whitelist = [
+    { 
+      kind  = "*"
+      group = "*" 
+    }
+  ]
   permissions = []
 }
