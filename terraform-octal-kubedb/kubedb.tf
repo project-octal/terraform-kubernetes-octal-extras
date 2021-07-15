@@ -10,6 +10,13 @@ module "kubedb_argocd_application" {
   repo_url        = "https://charts.appscode.com/stable/"
   chart           = "kubedb"
   target_revision = "v2021.03.17"
+  helm_parameters = [
+    {
+      name         = "global.license"
+      value        = var.license
+      force_string = true
+    }
+  ]
   ignore_differences = [
     {
       kind = "APIService"

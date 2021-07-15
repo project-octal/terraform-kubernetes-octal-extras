@@ -16,3 +16,7 @@ variable "argocd_project" {
   type        = string
   description = ""
 }
+variable "license" {
+  type        = string
+  description = ""
+}
