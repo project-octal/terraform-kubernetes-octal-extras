@@ -19,9 +19,9 @@ module "kubedb_argocd_application" {
   ]
   ignore_differences = [
     {
-      kind = "APIService"
+      kind  = "APIService"
       group = "apiregistration.k8s.io"
-      name = "v1alpha1.validators.kubedb.com"
+      name  = "v1alpha1.validators.kubedb.com"
       jsonPointers = [
         "/spec/caBundle",
         "/metadata"
