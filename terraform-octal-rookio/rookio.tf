@@ -1,5 +1,7 @@
 module "rookio_argocd_application" {
-  source             = "github.com/project-octal/terraform-argocd-application"
+  source  = "project-octal/argocd-application/kubernetes"
+  version = "2.0.0"
+
   argocd_namespace   = var.argocd_namespace
   project            = var.argocd_project
   destination_server = var.deployment_cluster
