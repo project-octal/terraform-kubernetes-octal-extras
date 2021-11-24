@@ -60,7 +60,7 @@ terraform apply -var-file secrets.tfvars
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_octal_extras_argocd_project"></a> [octal\_extras\_argocd\_project](#module\_octal\_extras\_argocd\_project) | git::https://github.com/project-octal/terraform-argocd-project | feature/kubernetes_manifest |
+| <a name="module_octal_extras_argocd_project"></a> [octal\_extras\_argocd\_project](#module\_octal\_extras\_argocd\_project) | project-octal/argocd-project/kubernetes | 2.0.0 |
 | <a name="module_octal_extras_kubedb"></a> [octal\_extras\_kubedb](#module\_octal\_extras\_kubedb) | ./terraform-octal-kubedb | n/a |
 | <a name="module_octal_extras_rookio"></a> [octal\_extras\_rookio](#module\_octal\_extras\_rookio) | ./terraform-octal-rookio | n/a |
 

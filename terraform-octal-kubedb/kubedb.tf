@@ -1,5 +1,7 @@
 module "kubedb_argocd_application" {
-  source             = "git::https://github.com/project-octal/terraform-argocd-application.git?ref=feature/kubernetes_manifest"
+  source  = "project-octal/argocd-application/kubernetes"
+  version = "2.0.0"
+
   argocd_namespace   = var.argocd_namespace
   project            = var.argocd_project
   destination_server = var.deployment_cluster

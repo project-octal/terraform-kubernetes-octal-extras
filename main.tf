@@ -1,7 +1,9 @@
 # Create the ArgoCD Project.
 module "octal_extras_argocd_project" {
-  source = "git::https://github.com/project-octal/terraform-argocd-project?ref=feature/kubernetes_manifest"
-  count  = anytrue(values(local.enabled_extras)[*]["enabled"]) ? 1 : 0
+  source  = "project-octal/argocd-project/kubernetes"
+  version = "2.0.0"
+
+  count = anytrue(values(local.enabled_extras)[*]["enabled"]) ? 1 : 0
 
   namespace   = var.argocd_namespace
   name        = "project-octal-extras"
