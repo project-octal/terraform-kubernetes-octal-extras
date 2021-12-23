@@ -14,5 +14,5 @@ module "octal_extras_kubedb" {
   argocd_project       = module.octal_extras_argocd_project[0].name
   deployment_namespace = local.enabled_extras["kubedb"]["namespace"]
   license              = var.enabled_extras.kubedb.license
-  version              = var.enabled_extras.kubedb.version
+  kubedb_version       = var.enabled_extras.kubedb.kubedb_version
 }

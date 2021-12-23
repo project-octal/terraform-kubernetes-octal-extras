@@ -20,7 +20,7 @@ variable "license" {
   type        = string
   description = ""
 }
-variable "version" {
-  type = string
+variable "kubedb_version" {
+  type        = string
   description = "value"
 }

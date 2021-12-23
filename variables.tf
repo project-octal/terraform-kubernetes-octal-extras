@@ -16,10 +16,10 @@ variable "enabled_extras" {
       namespace = string
     }))
     kubedb = optional(object({
-      enabled   = bool
-      namespace = string
-      license   = string
-      version   = string
+      enabled        = bool
+      namespace      = string
+      license        = string
+      kubedb_version = string
     }))
     code_server = optional(object({
       enabled   = bool
