@@ -20,3 +20,7 @@ variable "license" {
   type        = string
   description = ""
 }
+variable "version" {
+  type = string
+  description = "value"
+}

@@ -19,6 +19,7 @@ variable "enabled_extras" {
       enabled   = bool
       namespace = string
       license   = string
+      version   = string
     }))
     code_server = optional(object({
       enabled   = bool

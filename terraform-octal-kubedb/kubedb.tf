@@ -11,7 +11,7 @@ module "kubedb_argocd_application" {
   release_name    = "fancy"
   repo_url        = "https://charts.appscode.com/stable/"
   chart           = "kubedb"
-  target_revision = "v2021.03.17"
+  target_revision = var.version #"v2021.03.17"
   helm_parameters = [
     {
       name         = "global.license"
