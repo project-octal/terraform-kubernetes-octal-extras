@@ -1,6 +1,6 @@
 module "rookio_argocd_application" {
   source  = "project-octal/argocd-application/kubernetes"
-  version = "2.0.0"
+  version = "2.0.1"
 
   argocd_namespace   = var.argocd_namespace
   project            = var.argocd_project
