@@ -73,11 +73,11 @@ terraform apply -var-file secrets.tfvars
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_argocd_namespace"></a> [argocd\_namespace](#input\_argocd\_namespace) | n/a | `string` | n/a | yes |
-| <a name="input_deployment_cluster"></a> [deployment\_cluster](#input\_deployment\_cluster) | n/a | `string` | `"https://kubernetes.default.svc"` | no |
-| <a name="input_enabled_extras"></a> [enabled\_extras](#input\_enabled\_extras) | n/a | <pre>object({<br>    rookio = optional(object({<br>      enabled   = bool<br>      namespace = string<br>    }))<br>    kubedb = optional(object({<br>      enabled   = bool<br>      namespace = string<br>      license   = string<br>    }))<br>    code_server = optional(object({<br>      enabled   = bool<br>      namespace = string<br>    }))<br>  })</pre> | `{}` | no |
+| Name | Description | Type                                                                                                                                                                                                                                                                                                                                                                                                  | Default | Required |
+|------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|:--------:|
+| <a name="input_argocd_namespace"></a> [argocd\_namespace](#input\_argocd\_namespace) | n/a | `string`                                                                                                                                                                                                                                                                                                                                                                                              | n/a | yes |
+| <a name="input_deployment_cluster"></a> [deployment\_cluster](#input\_deployment\_cluster) | n/a | `string`                                                                                                                                                                                                                                                                                                                                                                                              | `"https://kubernetes.default.svc"` | no |
+| <a name="input_enabled_extras"></a> [enabled\_extras](#input\_enabled\_extras) | n/a | <pre>object({<br>    rookio = optional(object({<br>      enabled   = bool<br>      namespace = string<br>      chart_version = string<br>    }))<br>    kubedb = optional(object({<br>      enabled   = bool<br>      namespace = string<br>      license   = string<br>    }))<br>    code_server = optional(object({<br>      enabled   = bool<br>      namespace = string<br>    }))<br>  })</pre> | `{}` | no |
 
 ## Outputs
 
