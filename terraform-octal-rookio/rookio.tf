@@ -11,5 +11,5 @@ module "rookio_argocd_application" {
   release_name    = "fancy"
   repo_url        = "https://charts.rook.io/release"
   chart           = "rook-ceph"
-  target_revision = "v1.5.9"
+  target_revision = var.chart_version
 }
