@@ -6,8 +6,9 @@ locals {
     } : var.enabled_extras.kubedb
 
     rookio = var.enabled_extras.rookio == null ? {
-      enabled   = false
-      namespace = "kube-rookio"
+      enabled       = false
+      namespace     = "kube-rookio"
+      chart_version = "v1.5.9"
     } : var.enabled_extras.rookio
 
     code_server = var.enabled_extras.code_server == null ? {

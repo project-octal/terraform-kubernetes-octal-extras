@@ -12,8 +12,9 @@ variable "deployment_cluster" {
 variable "enabled_extras" {
   type = object({
     rookio = optional(object({
-      enabled   = bool
-      namespace = string
+      enabled       = bool
+      namespace     = string
+      chart_version = string
     }))
     kubedb = optional(object({
       enabled        = bool

@@ -13,4 +13,5 @@ module "octal_extras_rookio" {
   argocd_namespace     = var.argocd_namespace
   argocd_project       = module.octal_extras_argocd_project[0].name
   deployment_namespace = local.enabled_extras["rookio"]["namespace"]
+  chart_version        = local.enabled_extras["rookio"]["chart_version"]
 }

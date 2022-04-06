@@ -16,3 +16,8 @@ variable "argocd_project" {
   type        = string
   description = ""
 }
+
+variable "chart_version" {
+  type        = string
+  description = "The version of the RookIO chart to deploy"
+}
